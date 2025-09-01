@@ -1,26 +1,476 @@
+
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .all-\[unset\] {
+    all: unset;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --foundation-greygrey-100: rgba(191, 191, 191, 1);
+  --foundation-greygrey-200: rgba(160, 160, 160, 1);
+  --foundation-greygrey-300: rgba(116, 116, 116, 1);
+  --foundation-greygrey-400: rgba(89, 89, 89, 1);
+  --foundation-greygrey-50: rgba(234, 234, 234, 1);
+  --foundation-greygrey-500: rgba(48, 48, 48, 1);
+  --foundation-greygrey-600: rgba(44, 44, 44, 1);
+  --foundation-greygrey-700: rgba(34, 34, 34, 1);
+  --foundation-greygrey-800: rgba(26, 26, 26, 1);
+  --foundation-greygrey-900: rgba(20, 20, 20, 1);
+  --foundation-orangeorange-100: rgba(250, 209, 176, 1);
+  --foundation-orangeorange-200: rgba(248, 187, 138, 1);
+  --foundation-orangeorange-300: rgba(245, 157, 84, 1);
+  --foundation-orangeorange-400: rgba(243, 137, 51, 1);
+  --foundation-orangeorange-50: rgba(254, 240, 230, 1);
+  --foundation-orangeorange-500: rgba(240, 108, 0, 1);
+  --foundation-orangeorange-600: rgba(218, 98, 0, 1);
+  --foundation-orangeorange-700: rgba(170, 77, 0, 1);
+  --foundation-orangeorange-800: rgba(132, 59, 0, 1);
+  --foundation-orangeorange-900: rgba(101, 45, 0, 1);
+  --foundation-yellowyellow-100: rgba(255, 244, 176, 1);
+  --foundation-yellowyellow-200: rgba(255, 239, 138, 1);
+  --foundation-yellowyellow-300: rgba(255, 232, 84, 1);
+  --foundation-yellowyellow-400: rgba(255, 228, 51, 1);
+  --foundation-yellowyellow-50: rgba(255, 252, 230, 1);
+  --foundation-yellowyellow-500: rgba(255, 221, 0, 1);
+  --foundation-yellowyellow-600: rgba(232, 201, 0, 1);
+  --foundation-yellowyellow-700: rgba(181, 157, 0, 1);
+  --foundation-yellowyellow-800: rgba(140, 122, 0, 1);
+  --foundation-yellowyellow-900: rgba(107, 93, 0, 1);
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
+
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+/* Define font utility classes */
+.sedgwick {
+  font-family: "Sedgwick Ave Display", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka {
+  font-family: "Fredoka", sans-serif;
+}
+@layer base {
+  .font-ibm {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+/* Theme Colors & Fonts */
+@theme {
+  --color-orange: #ff6b00;
+  --color-orange-hover: #ff8533;
+  --color-white-100: #efefef;
+  --font-sans: "Mona Sans", sans-serif;
+  --font-modern-negra: "Modern Negra", sans-serif;
+  --font-serif: "DM Serif Text", serif;
+
+  /* Brand GREY scale mapped to foundation variables for Tailwind v4 tokens */
+  --color-grey-50: var(--foundation-greygrey-50);
+  --color-grey-100: var(--foundation-greygrey-100);
+  --color-grey-200: var(--foundation-greygrey-200);
+  --color-grey-300: var(--foundation-greygrey-300);
+  --color-grey-400: var(--foundation-greygrey-400);
+  --color-grey-500: var(--foundation-greygrey-500);
+  --color-grey-600: var(--foundation-greygrey-600);
+  --color-grey-700: var(--foundation-greygrey-700);
+  --color-grey-800: var(--foundation-greygrey-800);
+  --color-grey-900: var(--foundation-greygrey-900);
+
+  /* Brand ORANGE scale (optional) */
+  --color-orange-50: var(--foundation-orangeorange-50);
+  --color-orange-100: var(--foundation-orangeorange-100);
+  --color-orange-200: var(--foundation-orangeorange-200);
+  --color-orange-300: var(--foundation-orangeorange-300);
+  --color-orange-400: var(--foundation-orangeorange-400);
+  --color-orange-500: var(--foundation-orangeorange-500);
+  --color-orange-600: var(--foundation-orangeorange-600);
+  --color-orange-700: var(--foundation-orangeorange-700);
+  --color-orange-800: var(--foundation-orangeorange-800);
+  --color-orange-900: var(--foundation-orangeorange-900);
+
+  /* Brand YELLOW scale (optional) */
+  --color-yellow-50: var(--foundation-yellowyellow-50);
+  --color-yellow-100: var(--foundation-yellowyellow-100);
+  --color-yellow-200: var(--foundation-yellowyellow-200);
+  --color-yellow-300: var(--foundation-yellowyellow-300);
+  --color-yellow-400: var(--foundation-yellowyellow-400);
+  --color-yellow-500: var(--foundation-yellowyellow-500);
+  --color-yellow-600: var(--foundation-yellowyellow-600);
+  --color-yellow-700: var(--foundation-yellowyellow-700);
+  --color-yellow-800: var(--foundation-yellowyellow-800);
+  --color-yellow-900: var(--foundation-yellowyellow-900);
+}
+
+/* Base Styles */
+html,
+body {
+  width: 100%;
+  background-color: #0d0d0d;
+  color: var(--color-white-100);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Tailwind Utility Extensions */
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility text-gradient {
+  background: linear-gradient(to bottom, #ffffff, #898989);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility radial-gradient {
+  background: radial-gradient(circle at center, #434343 0%, #0d0d0d 50%, transparent 100%);
+}
+
+@utility masked-img {
+  mask-image: url("/images/mask-img.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 50%;
+}
+
+/* New Utilities for Agency Theme */
+@utility btn-primary {
+  @apply px-6 py-3 rounded-md font-semibold bg-[var(--color-orange)] text-black hover:bg-[var(--color-orange-hover)] transition;
+}
+
+@utility section-padding {
+  @apply py-24 px-5 md:px-12;
+}
+
+@utility heading-xl {
+  @apply text-5xl md:text-7xl font-modern-negra text-orange text-center leading-tight;
+}
+
+/* Layout Defaults */
+@layer components {
+  main {
+    @apply w-full overflow-hidden;
+  }
+}
+.welcome-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--foundation-greygrey-800);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.welcome-screen .overlap-group-wrapper {
+  background-color: var(--foundation-greygrey-800);
+  height: 1024px;
+  width: 1440px;
+}
+
+.welcome-screen .overlap-group {
+  height: 1018px;
+  left: 204px;
+  position: relative;
+  top: 3px;
+  width: 1031px;
+}
+
+.welcome-screen .background-faded {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  left: 0;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+}
+
+.welcome-screen .text-wrapper {
+  color: #2c2c2c;
+  font-size: 510.7px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 997.5px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.welcome-screen .hello {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  left: 350px;
+  padding: 10px;
+  position: absolute;
+  top: 72px;
+}
+
+.welcome-screen .div {
+  color: #ffffff;
+  font-size: 142.1px;
+  font-weight: 400;
+  letter-spacing: -5.68px;
+  line-height: 832.5px;
+  margin-top: -1.00px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+/* Hero section*/
+.hero {
+  align-items: start;
+  background-color: #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* prevent horizontal scroll */
+}
+
+.hero .overlap-group-wrapper {
+  background-color: var(--foundation-greygrey-900);
+  height: 100vh;
+  width: 100%;
+}
+
+.hero .overlap-group {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Call button */
+.hero .call-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--foundation-orangeorange-50);
+  border-radius: 240px;
+  width: auto; 
+  height: auto;
+  padding: 0.5rem 1rem;
+  font-size: clamp(14px, 2vw, 17px);
+  margin: 16px;
+  position: absolute;
+  top: 13px;
+  left: 0;
+  cursor: pointer;
+}
+
+.hero .text-wrapper {
+  color: #000000;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.68px;
+  line-height: normal;   /* FIXED */
+  position: static;      /* FIXED */
+  white-space: nowrap;
+}
+
+/* Call button icon */
+.hero .date-to {
+  height: 25px;   /* smaller to align */
+  width: 25px;
+  position: static; /* FIXED */
+}
+
+/* Menu button */
+.hero .menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin: 16px;
+  border: 1px solid var(--foundation-orangeorange-50);
+  border-radius: 240px;
+  width: auto;  
+  height: auto;
+
+  font-size: clamp(17px, 4vw, 20px);
+  padding: 0.5rem 1rem;
+
+  position: absolute;
+  top: 13px;
+  right: 0;
+  cursor: pointer;
+}
+
+.hero .bulleted-list {
+  height: 25px;
+  width: 25px;
+  position: static; /* FIXED */
+}
+
+.hero .div {
+  color: var(--foundation-orangeorange-50);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.68px;
+  line-height: normal;   /* FIXED */
+  position: static;      /* FIXED */
+  white-space: nowrap;
+}
+
+/* Snap text */
+.hero .text-wrapper-2 {
+  color: var(--foundation-greygrey-700);
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: clamp(10rem, 30vw, 65rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  position: absolute;
+  top: 50%;              /* Center Y */
+  left: 50%;             /* Center X */
+  transform: translate(-50%, -50%); /* Adjust both X and Y */
+  text-align: center;
+  white-space: nowrap;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
