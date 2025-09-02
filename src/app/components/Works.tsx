@@ -38,7 +38,7 @@ const Works = () => {
           muted
         >
           <source
-            src="Video_1.mp4"
+            src="/Video_1.mp4"
             type="video/mp4"
           />
         </video>
@@ -51,7 +51,7 @@ const Works = () => {
           muted
         >
           <source
-            src="Video_2.mp4"
+            src="/Video_2.mp4"
             type="video/mp4"
           />
         </video>
@@ -64,7 +64,7 @@ const Works = () => {
           muted
         >
           <source
-            src="Video_3.mp4"
+            src="/Video_3.mp4"
             type="video/mp4"
           />
         </video>
