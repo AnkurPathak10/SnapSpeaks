@@ -63,7 +63,7 @@ const Hello = ({ onFinish }: { onFinish: () => void }) => {
       });
 
     return () => tl.kill();
-  }, []);
+  }, [onFinish]);
 
   return (
     <main
@@ -73,7 +73,7 @@ const Hello = ({ onFinish }: { onFinish: () => void }) => {
       {/* Snap background */}
       <div
         ref={snapRef}
-        className="sedgwick text-[510px] leading-none text-[#2c2c2c]"
+        className="sedgwick lg:text-[510px] text-[510px] sm:text-[300px] leading-none text-[#2c2c2c]"
       >
         Snap
       </div>
