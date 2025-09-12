@@ -6,7 +6,7 @@ const words = [
   "Hello",       // English
   "नमस्ते",     // Hindi
   "नमस्कार",     // Marathi
-  "ನಮಸ್ಕಾರ",   // Kannada
+  "নমস্কার",   // Kannada
   "Hola",        // Spanish
   "Привет",      // Russian
   "Bonjour",     // French
@@ -73,7 +73,7 @@ const Hello = ({ onFinish }: { onFinish: () => void }) => {
       {/* Snap background */}
       <div
         ref={snapRef}
-        className="sedgwick lg:text-[510px] text-[510px] sm:text-[300px] leading-none text-[#2c2c2c]"
+        className="sedgwick lg:text-[510px] text-[220px] leading-none text-[#2c2c2c]"
       >
         Snap
       </div>
@@ -81,7 +81,7 @@ const Hello = ({ onFinish }: { onFinish: () => void }) => {
       {/* Hello centered */}
       <div
         ref={helloRef}
-        className="absolute fredoka text-[142px] leading-none text-white"
+        className="absolute fredoka  text-[120px]  leading-none text-white"
       >
         {index >= 0 ? words[index] : ""}
       </div>
