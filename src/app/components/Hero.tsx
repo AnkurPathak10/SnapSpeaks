@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import bulletedList from "../static/bulletedList.png";
 import dateTo from "../static/dateTo.png";
 import Image from "next/image";
@@ -7,11 +7,13 @@ import { gsap } from "gsap";
 import SplitType from "split-type";
 import { HERO_SERVICES } from "../constants";
 import { NavbarMenu } from "./NavbarMenu";
+import ScheduleCallModal from "./ScheduleCallModal";
 
 export const Hero = () => {
 
   const wordRef = useRef<HTMLSpanElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!wordRef.current) return;
@@ -102,19 +104,21 @@ export const Hero = () => {
           {/* SNAP watermark in the back */}
           <div className="text-wrapper-2 z-0">Snap</div>
           <div className="flex flex-col -top-1/8 justify-center items-center relative z-10 pt-8 -translate-y-10">
-            <Image src="/logo.png" alt="logo" className="w-[650px]" height={750} width={750}/>
-            <h1 className="text-8xl pt-4 font-semibold text-center font-ibm !relative !m-0 -translate-y-60 leading-tight">
+            <Image src="/logo.png" alt="logo" className="w-[650px] translate-y-25 lg:translate-y-5" height={750} width={750}/>
+            <h1 className="text-5xl lg:text-8xl  pt-4 font-semibold text-center -translate-y-13 lg:-translate-y-50 font-ibm !relative !m-0  leading-tight">
                Turning Vision into {" "}
                <span ref={wordRef} className="text-yellow-400">
                 Reality
                </span>
             </h1>
-            <div ref={containerRef} className=" text-center z-10 pt-15 -translate-y-80">
+            <div ref={containerRef} className="text-center z-10 pt-8">
               {HERO_SERVICES.map((service, index) => (
                 <p
                   key={index}
                   className={`${
-                    index === 0 ? "text-yellow-400 font-bold font-ibm p-10 text-5xl" : "text-white pl-50 pb-2 text-left font-ibm font-semibold text-2xl"
+                    index === 0 
+                      ? "text-yellow-400 font-bold font-ibm p-6 text-2xl lg:text-5xl md:text-4xl"
+                      : "text-white flex justify-start pl-4 md:pl-10 lg:pl-20 pb-2 text-left font-ibm font-semibold text-xl lg:text-2xl"
                   }`}
                 >
                   {index !== 0 && "🌟"}{service}
@@ -127,13 +131,26 @@ export const Hero = () => {
           
 
           {/* Buttons */}
-          <div className="call-button cursor-pointer translate-y-12">
-            <div className="text-wrapper cursor-pointer">Schedule a call</div>
-            <Image className="date-to" alt="Date to" src={dateTo} />
+          <div
+            className="call-button cursor-pointer translate-y-12"
+            onClick={() => {
+              console.log("Button clicked!");
+              setIsModalOpen(true);
+            }}
+          >
+
+              <div className="text-wrapper cursor-pointer">Schedule a call</div>
+              <Image className="date-to" alt="Date to" src={dateTo} />
           </div>
 
+          {/* Modal */}
+          <ScheduleCallModal
+            isOpen={isModalOpen}
+             onClose={() => setIsModalOpen(false)}
+           />
+
           {/* Navigation Menu */}
-          <div className="relative z-50 -translate-y-282 translate-x-145">
+          <div className="absolute z-50 -translate-y-266 hidden lg:block translate-x-145">
             <NavbarMenu/>
           </div>
           

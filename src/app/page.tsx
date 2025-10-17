@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className="relative min-h-screen">
       {/* Hero is always present */}
-      <Hero />
+      <Hero/>
 
       <section id="works" className="relative z-10 bg-grey-900">
         <Works />
